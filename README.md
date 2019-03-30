@@ -1,5 +1,7 @@
 # BiometricUtil
 
+[![](https://jitpack.io/v/IvanLuLyf/BiometricUtil.svg)](https://jitpack.io/#IvanLuLyf/BiometricUtil)
+
 In Android 9.0(API level 28),```FingerprintManager``` was deprecated,and Google suggest using ```BiometricPrompt```.
 
 This repo is made for Biometric recognition in Android 6.0(API level 23) and later.
