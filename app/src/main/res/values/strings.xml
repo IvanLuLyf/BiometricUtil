@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BiometricUtil</string>
+    <string name="txt_verify">Verify Fingerprint</string>
+    <string name="txt_no_support">Your Device Don\'t Support Fingerprint</string>
+    <string name="txt_success">Success</string>
+    <string name="txt_failed">Failed</string>
+</resources>
