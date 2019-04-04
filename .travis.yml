@@ -1,50 +1,38 @@
+# http://docs.travis-ci.com/user/languages/android/
 language: android
 jdk: oraclejdk8
 sudo: false
 
-env:
-  global:
-  - ANDROID_API_LEVEL=28
-  - ANDROID_BUILD_TOOLS_VERSION=28.0.3
-  - ANDROID_ABI=armeabi-v7a
-  - ANDROID_TAG=google_apis
-  - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+before_cache:
+- rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
 
 android:
   components:
-  #    - tools # to get the new `repository-11.xml`
   - platform-tools
-  - tools # to install Android SDK tools 25.1.x
-  - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-  - android-$ANDROID_API_LEVEL
+  - tools
+  - build-tools-28.0.0
+  - build-tools-28.0.3
+  - android-28
+  - extra-android-m2repository
+  - extra-google-m2repository
+script:
+- echo "Travis branch is $TRAVIS_BRANCH"
+- echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
+- ./gradlew assembleRelease
 
-  #    - addon-google_apis-google-$ANDROID_API_LEVEL
-  #    - extra-android-support
-  #    - extra-android-m2repository
-  #    - extra-google-m2repository
-
-  - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-
-  licenses:
-  - android-sdk-license-.+
-  - '.+'
+licenses:
+- 'android-sdk-preview-license-52d11cd2'
+- 'android-sdk-license-.+'
+- 'google-gdk-license-.+'
 
 before_install:
-- chmod +x gradlew
-- mkdir "$ANDROID_HOME/licenses" || true
+- yes | sdkmanager "platforms;android-28"
+- mkdir -p "$ANDROID_HOME/licenses"
 - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
 - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-
-before_script:
-# Create and start emulator
-- echo no | android create avd --force -n test -t "android-"$ANDROID_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
-- emulator -avd test -no-skin -no-window &
-- android-wait-for-emulator
-- adb shell input keyevent 82 &
-
-script:
-- ./gradlew assembleRelease
-- ./gradlew :app:createDebugAndroidTestCoverageReport --info --stacktrace
-
-after_success:
-- bash <(curl -s https://codecov.io/bash)
+- chmod +x gradlew
+- ./gradlew dependencies || true
