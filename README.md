@@ -3,6 +3,7 @@
 [![](https://jitpack.io/v/IvanLuLyf/BiometricUtil.svg)](https://jitpack.io/#IvanLuLyf/BiometricUtil)
 [![API](https://img.shields.io/badge/API-23%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=23)
 [![Build Status](https://travis-ci.org/IvanLuLyf/BiometricUtil.svg?branch=master)](https://travis-ci.org/IvanLuLyf/BiometricUtil)
+![GitHub](https://img.shields.io/github/license/IvanLuLyf/BiometricUtil.svg?color=blue)
 
 In Android 9.0(API level 28),```FingerprintManager``` was deprecated,and Google suggest using ```BiometricPrompt```.
 
