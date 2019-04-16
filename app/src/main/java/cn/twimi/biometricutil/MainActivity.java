@@ -1,7 +1,7 @@
 package cn.twimi.biometricutil;
 
 import androidx.appcompat.app.AppCompatActivity;
-import cn.twimi.biometric.BiometricUtil;
+import cn.twimi.util.BiometricUtil;
 
 import android.os.Bundle;
 import android.view.View;

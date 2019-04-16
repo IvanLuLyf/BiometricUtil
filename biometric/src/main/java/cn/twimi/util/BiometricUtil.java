@@ -1,4 +1,4 @@
-package cn.twimi.biometric;
+package cn.twimi.util;
 
 import android.content.Context;
 import android.content.pm.PackageManager;

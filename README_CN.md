@@ -5,15 +5,15 @@
 [![Build Status](https://travis-ci.org/IvanLuLyf/BiometricUtil.svg?branch=master)](https://travis-ci.org/IvanLuLyf/BiometricUtil)
 ![GitHub](https://img.shields.io/github/license/IvanLuLyf/BiometricUtil.svg?color=blue)
 
-In Android 9.0(API level 28),```FingerprintManager``` was deprecated,and Google suggest using ```BiometricPrompt```.
+在Android 9.0(API level 28),```FingerprintManager``` 被标记为过时的,Google建议转为使用```BiometricPrompt```.
 
-This repo is made for Biometric recognition in Android 6.0(API level 23) and later.
+本项目为Android 6.0(API level 23)及以上版本生物识别的封装.
 
 [中文](README_CN.md)
 
-# Configure
+## 项目配置
 
-Add it in your root build.gradle at the end of repositories:
+添加以下内容到项目的build.gradle文件里面:
 
 ```gradle
 allprojects {
@@ -24,7 +24,7 @@ allprojects {
 }
 ```
 
-Add the dependency
+添加项目依赖
 
 ```gradle
 dependencies {
@@ -32,17 +32,17 @@ dependencies {
 }
 ```
 
-# Usage
+## 使用
 
 ```java
-boolean flag = BiometricUtil.isSupportFinger(context); //if device support fingerprint will return true
+boolean flag = BiometricUtil.isSupportFinger(context); // 如果设备支持指纹识别则返回true
 ```
 
 ```java
 BiometricUtil.show(context, title, new BiometricUtil.OnBiometricCompleted() {
     @Override
     public void onCompleted(boolean status) {
-        //if true, the fingerprint is verified
+        // 返回true则指纹验证通过
     }
 });
 ```
